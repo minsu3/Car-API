@@ -8,6 +8,12 @@ app.use(express.json());
 //Configuration Variables
 const port = 9000;
 
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+});
+
 // Routes
 app.get('/', (req, res) => {
 	res.send('To visit customer information, visit /api/customers');
@@ -15,7 +21,7 @@ app.get('/', (req, res) => {
 
 //Get All Customers 
 app.get('/api/customers', (req, res)=> {
-	const getAllCustomers = 'SELECT * FROM customers';
+	const getAllCustomers = 'SELECT * ,customers.oid FROM customers';
 
 	database.all(getAllCustomers, (error, results)=> {
 		if(error) {
@@ -25,6 +31,7 @@ app.get('/api/customers', (req, res)=> {
 		else res.status(200).json(results);
 	});
 });
+
 //Get One Customer
 app.get('/api/customers/:id', (req, res)=> {
 	const customerId = req.params.id;
