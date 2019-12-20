@@ -19,19 +19,23 @@ class AllCustomersContainer extends Component {
     };
 
     deleteCustomer = (customer) => {
-        apiModel.delete(customer).then(data => {
-            this.setState({customers: data})
-        })
+        apiModel.delete(customer)
+            .then(() => this.fetchData())
+        console.log(customer.rowid)
     }   
-
     render() {
-        // this.state.customers 
-        // ? console.log(this.state.customers)
-        // : 
         let indexList 
         if(this.state.customers) {
+            // index is position of customer in customers
             indexList = this.state.customers.map((customer, index)=>{
-                return <AllCustomers customer={customer} key={index} />
+                return (
+                    <AllCustomers
+                        deleteCustomer={this.deleteCustomer}
+                        customer={customer}
+                        key={index}
+                        fetchData={this.fetchData}
+                    />
+                )
             })
         }
         return(

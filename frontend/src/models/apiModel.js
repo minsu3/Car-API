@@ -7,7 +7,7 @@ class apiModel {
             .then(response => response.json())
             .catch(err => console.log('Could not get all customers\n', err));
     }
-
+    
     static getOne = (rowid) => {
         return fetch(`${endPoint}/${rowid}`)
             .then(response => {
@@ -19,7 +19,6 @@ class apiModel {
             })
             .catch(err => console.log('Could not get customer \n', err));
     };
-    
 
     static create = (customer) => {
         return fetch(endPoint, {
@@ -37,32 +36,26 @@ class apiModel {
         let rowid = customer.rowid;
         // not expecting rowid in the body
         delete customer.rowid;
-
         console.log(customer)
         return fetch(`${endPoint}/${rowid}`, {
             method: 'PUT',
             headers: {  
                 'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: JSON.stringify(customer)
         })
             .then(response => response.json())
             .catch(err => console.log('Could not update customer \n', err));
     };
-
     static delete = (customer) => {
         let rowid = customer.rowid;
         // not expecting rowid in the body
         delete customer.rowid;
-        
         return fetch(`${endPoint}/${rowid}`, {
             method: "DELETE"
         })
-            .then(response => response.json())
             .catch(err => console.log('Could not delete customer \n', err));
     }
-
 }
 
 export default apiModel;

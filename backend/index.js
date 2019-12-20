@@ -53,6 +53,23 @@ app.get('/api/customers/:id', (req, res)=> {
 		}
 	});
 });
+// Get customer by name
+// app.get('/api/customers/:id', (req, res) => {
+// 	const customerId = req.params.id;
+// 	const getOneCustomer = `SELECT * FROM customers WHERE customers.oid = ?`;
+
+// 	database.all(getOneCustomer, [customerId], (error, results) => {
+// 		if (error) {
+// 			console.log("Failed to retrieve a customer from table", error);
+// 			res.sendStatus(500);
+// 		}
+// 		else {
+// 			console.log('Got this customer: ', results);
+// 			res.status(200).json(results);
+// 		}
+// 	});
+// });
+
 //Create one customer
 app.post('/api/customers', (req, res)=> {
 	const reqBody = [req.body.first_name, req.body.last_name, req.body.home_city];

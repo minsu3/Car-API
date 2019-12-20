@@ -26,20 +26,23 @@ class Create extends Component {
                     name='first_name' 
                     onChange={this.onInputChange} 
                     value={this.state.first_name} 
+                    required
                 />
                 <input 
                     type='text' 
                     placeholder="Last name..."
                     name='last_name' 
                     onChange={this.onInputChange} 
-                    value={this.state.last_name} 
+                    value={this.state.last_name}
+                    required 
                 />
                 <input 
                     type='text' 
                     placeholder="Home city..."
                     name='home_city' 
                     onChange={this.onInputChange} 
-                    value={this.state.home_city}  
+                    value={this.state.home_city}
+                    required  
                 />
                 <button type='submit'>Create</button>
             </form>

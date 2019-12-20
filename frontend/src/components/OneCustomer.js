@@ -13,18 +13,12 @@ class OneCustomer extends Component {
     onSubmit = (event) => {
         event.preventDefault();
         let customer = this.state;
-        let response = this.props.getOneCustomer(customer);
-
-        console.log('response: ', response);
-        let element = document.getElementById('response');
-        let para = document.createElement("P");
-        para.innerHTML = response[0].first_name;
-        element.appendChild(para);
+        this.props.getOneCustomer(customer);
     };
 
     render() {
         return(
-            <div id='customers'>
+            <div id='oneCustomer'>
                 <form onSubmit={this.onSubmit}>
                     <input
                         type='number'
@@ -35,10 +29,7 @@ class OneCustomer extends Component {
                     />
                     <button type='submit'>Retrieve</button>
             </form>
-                <div id="response"></div>
             </div>
-
-            
         )
     }
 }
