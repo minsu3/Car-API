@@ -1,4 +1,4 @@
 Project 3 
 
-![carshoppingapi](./wireframe.png)
-![carshoppingapi](./wireframe2.png)
+![carshoppingapi](./wireframe.jpg)
+![carshoppingapi](./wireframe2.jpg)
