@@ -2,26 +2,45 @@ import React, { Component } from 'react';
 
 class Create extends Component {
     state = {
-        customer: '',
+        first_name: '',
+        last_name: '',
+        home_city: '',
     }
     onInputChange = (event) => {
         this.setState({
-            customer: event.target.value
+            //name is input for first_name, last_name, home_city
+            [event.target.name]: event.target.value
         });
     };
     onFormSubmit = (event) => {
         event.preventDefault();
-        let customer = this.state.customer;
+        let customer = this.state;
         this.props.createCustomer(customer);
-        this.setState({ customer: '' });
     };
-
     render() {
         return(
-            <form onSubmit = {this.props.onFormSubmit}>
-                <input type='text' name='firstName' onChange={this.props.onFormSubmit} value={this.props.content} />
-                <input type='text' name='lastName' onChange={this.props.onFormSubmit} value={this.props.content} />
-                <input type='text' name='homeCity' onChange={this.props.onFormSubmit} value={this.props.content} />
+            <form onSubmit = {this.onFormSubmit}>
+                <input 
+                    type='text' 
+                    placeholder="First name..."
+                    name='first_name' 
+                    onChange={this.onInputChange} 
+                    value={this.state.first_name} 
+                />
+                <input 
+                    type='text' 
+                    placeholder="Last name..."
+                    name='last_name' 
+                    onChange={this.onInputChange} 
+                    value={this.state.last_name} 
+                />
+                <input 
+                    type='text' 
+                    placeholder="Home city..."
+                    name='home_city' 
+                    onChange={this.onInputChange} 
+                    value={this.state.home_city}  
+                />
                 <button type='submit'>Create</button>
             </form>
         )

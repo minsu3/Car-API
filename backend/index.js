@@ -11,6 +11,7 @@ const port = 9000;
 app.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
 	next();
 });
 
@@ -28,7 +29,11 @@ app.get('/api/customers', (req, res)=> {
 			console.log("Get all customers table failed", error);
 			res.sendStatus(500); 
 		}
-		else res.status(200).json(results);
+		else {
+			console.log(results);
+			res.status(200).json(results);
+		}
+		
 	});
 });
 
@@ -42,7 +47,10 @@ app.get('/api/customers/:id', (req, res)=> {
 			console.log("Failed to retrieve a customer from table", error);
 			res.sendStatus(500);
 		}
-		else res.status(200).json(results);
+		else {
+			console.log('Got this customer: ', results);
+			res.status(200).json(results);
+		}
 	});
 });
 //Create one customer
@@ -50,7 +58,7 @@ app.post('/api/customers', (req, res)=> {
 	const reqBody = [req.body.first_name, req.body.last_name, req.body.home_city];
 	const insertNewCustomer = 'INSERT INTO customers VALUES (?, ?, ?)';
 
-	database.run(insertNewCustomer, reqBody, error => {
+	database.run(insertNewCustomer, reqBody, function(error) {
 		if(error) {
 			console.log(`Create new customer with name ${req.body.first_name} ${req.body.last_name} failed`);
 			res.sendStatus(500);
@@ -62,11 +70,13 @@ app.post('/api/customers', (req, res)=> {
 });
 //Update one customer 
 app.put('/api/customers/:id', (req, res) => {
+	console.log(req);``
 	const customerId = req.params.id;
-	const updateOneCustomer = `UPDATE customers SET FIRST_NAME = ?, LAST_NAME = ? WHERE customers.oid = ${customerId}`;
+	const updateOneCustomer = `UPDATE customers SET FIRST_NAME = ?, LAST_NAME = ?, HOME_CITY = ? WHERE customers.oid = ${customerId}`;
+	console.log(req.body)
 
 	//use the query string and req.body to run the query in the database
-	database.run(updateOneCustomer, [req.body.first_name, req.body.last_name], error=> {
+	database.run(updateOneCustomer, [req.body.first_name, req.body.last_name, req.body.home_city], error=> {
 		if(error) {
 			console.log(`Update customer named ${req.body.first_name} ${req.body.last_name} failed`, error);
 			res.sendStatus(500);

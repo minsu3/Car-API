@@ -70,7 +70,7 @@ p {
   /* width: 100px; */
 }
 #customer {
-  margin-left: 200px;
+  margin-left: 390px;
   text-decoration: underline;
   /* width: 100px; */
 }
@@ -126,7 +126,7 @@ input {
   display: block;
   position: relative;
   top: 0px;
-  left: 70px;
+  left: 60px;
   z-index: 1;
   -webkit-user-select: none;
   user-select: none;

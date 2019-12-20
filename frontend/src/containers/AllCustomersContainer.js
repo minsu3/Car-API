@@ -14,9 +14,15 @@ class AllCustomersContainer extends Component {
     fetchData = () => {
         apiModel.all()
             .then((data) => {
-            this.setState({ customers: data });
-        });
+                this.setState({ customers: data });
+            });
     };
+
+    deleteCustomer = (customer) => {
+        apiModel.delete(customer).then(data => {
+            this.setState({customers: data})
+        })
+    }   
 
     render() {
         // this.state.customers 
@@ -25,13 +31,14 @@ class AllCustomersContainer extends Component {
         let indexList 
         if(this.state.customers) {
             indexList = this.state.customers.map((customer, index)=>{
-                return <AllCustomers customers={customer} key={index} />
+                return <AllCustomers customer={customer} key={index} />
             })
         }
         return(
             <div className='contain'>
-                <h2>List all customer information!</h2>
+                <h2>List all customers!</h2>
                 <div id='customer'>
+                    <p className='names'>ID</p>
                     <p className='names'>First Name</p>
                     <p className='names'>Last Name</p>
                     <p className='home'>Home City</p>

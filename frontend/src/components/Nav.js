@@ -1,11 +1,17 @@
 import React from 'react'
-import { NavLink, Switch } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function Nav() {
     return(
     <div className='nav'>
             <nav>
-                <NavLink to={'/'} className='linked' activeClassName="activate">API documentation</NavLink>
+                <span>
+                    <NavLink to={'/'} className='linked' activeClassName="activate">API documentation</NavLink>
+                </span>
+
+                {/* <span>
+                    <NavLink to={'/'} className='linked' activeClassName="activate">API documentation</NavLink>
+                </span> */}
             </nav>
         <nav role="navigation">
             <div id="menuToggle">
@@ -16,17 +22,17 @@ function Nav() {
                 <ul id="menu">
 
                 <a href="#"><li><nav >
-                <NavLink to={'/index'} className="link" activeClassName="active">All Customers</NavLink>
+                <NavLink to={'/index'} className="link" activeClassName="active">Get All Customers</NavLink>
                 </nav></li></a>
 
                 <a href="#"><li><nav>
-                    <NavLink to={'/detail'} className="link" activeClassName="active">Single Customer</NavLink>
+                    <NavLink to={'/detail'} className="link" activeClassName="active">Get One Customer Information</NavLink>
                 </nav></li></a>
                 <a href="#"><li><nav>
-                            <NavLink to={'/create'} className="link" activeClassName="active">Create Customer</NavLink>
+                            <NavLink to={'/create'} className="link" activeClassName="active">Create Customers</NavLink>
                 </nav></li></a>
                 <a href="#"><li><nav>
-                            <NavLink to={'/update'} className="link" activeClassName="active">Update Customer</NavLink>
+                            <NavLink to={'/update'} className="link" activeClassName="active">Update Customers</NavLink>
                 </nav></li></a>
                 </ul>
             </div>
