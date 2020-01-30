@@ -129,6 +129,7 @@ const cars_list = [
 ];
 
 
+
 db.serialize(()=> {
 	//Drop, Create, Insert Customers 
 	const dropCustomersTableQuery = 'DROP TABLE IF EXISTS customers';

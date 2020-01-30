@@ -21,7 +21,7 @@ class AllCustomersContainer extends Component {
     deleteCustomer = (customer) => {
         apiModel.delete(customer)
             .then(() => this.fetchData())
-        console.log(customer.rowid)
+            console.log(customer.rowid)
     }   
     render() {
         let indexList 

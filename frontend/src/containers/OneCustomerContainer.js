@@ -4,7 +4,7 @@ import OneCustomer from '../components/OneCustomer';
 
 class OneCustomerContainer extends Component {
     state = {
-        customers: ''
+        customers: null
     }
     getOneCustomer = (customer) => {
         apiModel.getOne(customer.rowid)

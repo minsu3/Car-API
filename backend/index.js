@@ -22,7 +22,8 @@ app.get('/', (req, res) => {
 
 //Get All Customers 
 app.get('/api/customers', (req, res)=> {
-	const getAllCustomers = 'SELECT * ,customers.oid FROM customers';
+	const getAllCustomers = 'SELECT * FROM customers';
+	// const getAllCustomers = 'SELECT * customers.oid FROM customers';
 
 	database.all(getAllCustomers, (error, results)=> {
 		if(error) {
@@ -53,22 +54,6 @@ app.get('/api/customers/:id', (req, res)=> {
 		}
 	});
 });
-// Get customer by name
-// app.get('/api/customers/:id', (req, res) => {
-// 	const customerId = req.params.id;
-// 	const getOneCustomer = `SELECT * FROM customers WHERE customers.oid = ?`;
-
-// 	database.all(getOneCustomer, [customerId], (error, results) => {
-// 		if (error) {
-// 			console.log("Failed to retrieve a customer from table", error);
-// 			res.sendStatus(500);
-// 		}
-// 		else {
-// 			console.log('Got this customer: ', results);
-// 			res.status(200).json(results);
-// 		}
-// 	});
-// });
 
 //Create one customer
 app.post('/api/customers', (req, res)=> {
@@ -87,10 +72,8 @@ app.post('/api/customers', (req, res)=> {
 });
 //Update one customer 
 app.put('/api/customers/:id', (req, res) => {
-	console.log(req);``
 	const customerId = req.params.id;
 	const updateOneCustomer = `UPDATE customers SET FIRST_NAME = ?, LAST_NAME = ?, HOME_CITY = ? WHERE customers.oid = ${customerId}`;
-	console.log(req.body)
 
 	//use the query string and req.body to run the query in the database
 	database.run(updateOneCustomer, [req.body.first_name, req.body.last_name, req.body.home_city], error=> {

@@ -11,7 +11,6 @@ class AllCustomers extends Component {
                 <p className='name'> {this.props.customer.first_name}</p>
                 <p className='name'> {this.props.customer.last_name}</p>
                 <p className='homecity'> {this.props.customer.home_city}</p>
-
                 <button onClick={this.handleClick}>Delete</button>
             </div>
         )

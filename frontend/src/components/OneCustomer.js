@@ -28,7 +28,7 @@ class OneCustomer extends Component {
                         value={this.state.rowid}
                     />
                     <button type='submit'>Retrieve</button>
-            </form>
+                </form>
             </div>
         )
     }
