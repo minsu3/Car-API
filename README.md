@@ -1,4 +1,4 @@
-# Project 3 
+# Car Shopping API
 * This project is a tool to test, update, and create the car shopping API on the browser. <br>
 * Car shopping API implements full CRUD operations using SQLite server database. <br>
 
