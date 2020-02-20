@@ -14,7 +14,7 @@
 
 
 ## Entity Relationship Diagram 
-![carshoppingapi](./erd.png)
+![carshoppingapi](./backend/erd.png)
 
 ## Customers request 
 
